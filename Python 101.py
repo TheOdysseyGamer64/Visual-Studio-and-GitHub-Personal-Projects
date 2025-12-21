@@ -52,7 +52,7 @@ def playGame(difficulty, character):
                 if attempts > 0:
                     print(f"Wrong guess! Try again. Attempts left: {attempts}")
                 else:
-                    print(f"😢 Game Over! The secret number was {secret_number}.")
+                    print(f"Game Over! The secret number was {secret_number}.")
         except ValueError:
             print("Please enter a valid number.")
 
@@ -61,5 +61,6 @@ print("Welcome to the Mini Adventure Game!")
 difficulty = charLevel()
 character = charChoice()
 playGame(difficulty, character)
+
 
 
