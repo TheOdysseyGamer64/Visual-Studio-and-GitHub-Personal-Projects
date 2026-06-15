@@ -57,20 +57,20 @@ def display_title():
     print("\n" + "="*60)
     print("     SUPER SMASH BROS ULTIMATE - PYTHON EDITION")
     print("="*60)
-    print("\nWelcome to the ultimate fighting experience!")
+    print("Welcome to the ultimate fighting experience!")
     print("Choose your fighter and battle for victory!\n")
 
 
 def display_characters():
     """Display all available characters using iteration."""
-    print("\n--- SELECT YOUR CHARACTER ---")
+    print("--- SELECT YOUR CHARACTER ---")
     print("Available Fighters:\n")
     
     # Iterate through character options
     for index, (character_name, stats) in enumerate(CHARACTERS.items(), 1):
-        print(f"{index}. {character_name}")
-        print(f"   HP: {stats['hp']} | Attack Speed: {stats['attack_speed']}")
-        print(f"   {stats['description']}\n")
+        print("{index}. {character_name}")
+        print("   HP: {stats['hp']} | Attack Speed: {stats['attack_speed']}")
+        print("   {stats['description']}\n")
 
 
 def select_character():
