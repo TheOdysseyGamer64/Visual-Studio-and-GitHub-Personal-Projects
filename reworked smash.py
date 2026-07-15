@@ -1,0 +1,576 @@
+"""
+=========================================================
+SUPER SMASH BROS ULTIMATE - PYTHON EDITION V2
+Created by Shrey
+
+A GCSE Computer Science Project
+
+Programming Concepts:
+✓ Selection
+✓ Iteration
+✓ Sequences
+✓ Functions
+✓ Dictionaries
+✓ Randomisation
+=========================================================
+"""
+
+import random
+import time
+
+# ============================================
+# CHARACTER DATA
+# ============================================
+
+CHARACTERS = {
+
+    "Cloud": {
+        "hp": 100,
+        "speed": 0.90,
+        "moves": {
+            "neutral": ("Slash", 5),
+            "side": ("Cross Slash", 15),
+            "up": ("Climhazzard", 10),
+            "down": ("Limit Break", 18),
+            "final": ("Omnislash Ver. 5", 35)
+        },
+        "description":
+        "A mercenary who grows stronger through his Limit Gauge."
+    },
+
+    "Mario": {
+        "hp": 95,
+        "speed": 0.95,
+        "moves": {
+            "neutral": ("Fireball", 6),
+            "side": ("Cape", 10),
+            "up": ("Super Jump Punch", 11),
+            "down": ("F.L.U.D.D.", 8),
+            "final": ("Mario Finale", 34)
+        },
+        "description":
+        "Nintendo's famous plumber."
+    },
+
+    "Luigi": {
+        "hp": 92,
+        "speed": 0.95,
+        "moves": {
+            "neutral": ("Fireball", 5),
+            "side": ("Green Missile", 14),
+            "up": ("Super Jump Punch", 10),
+            "down": ("Luigi Cyclone", 11),
+            "final": ("Poltergust G-00", 35)
+        },
+        "description":
+        "A timid fighter with surprising power."
+    },
+
+    "Sora": {
+        "hp": 97,
+        "speed": 0.93,
+        "moves": {
+            "neutral": ("Keyblade Slash", 6),
+            "side": ("Sonic Blade", 14),
+            "up": ("Aerial Sweep", 9),
+            "down": ("Magic Burst", 16),
+            "final": ("Sealing the Keyhole", 35)
+        },
+        "description":
+        "The Keyblade wielder."
+    },
+
+    "Mii Swordfighter": {
+        "hp": 90,
+        "speed": 1.0,
+        "moves": {
+            "neutral": ("Jab Combo", 5),
+            "side": ("Gale Strike", 11),
+            "up": ("Skyward Slash Dash", 10),
+            "down": ("Blade Counter", 13),
+            "final": ("Final Edge", 32)
+        },
+        "description":
+        "A balanced sword fighter."
+    },
+
+    "Little Mac": {
+        "hp": 90,
+        "speed": 1.10,
+        "moves": {
+            "neutral": ("Straight Lunge", 8),
+            "side": ("Jolt Haymaker", 14),
+            "up": ("Rising Uppercut", 10),
+            "down": ("Slip Counter", 0),
+            "final": ("Giga Mac", 38)
+        },
+        "description":
+        "A fearless boxer with devastating punches."
+    }
+}
+
+MOVE_KEYS = {
+    "1":"neutral",
+    "2":"side",
+    "3":"up",
+    "4":"down",
+    "5":"final"
+}
+
+# ============================================
+# TITLE
+# ============================================
+
+def title():
+
+    print("="*60)
+    print("      SUPER SMASH BROS. ULTIMATE")
+    print("            PYTHON EDITION")
+    print("="*60)
+    print()
+
+# ============================================
+# CHARACTER SELECT
+# ============================================
+
+def display_characters():
+
+    print("Choose your fighter\n")
+
+    number = 1
+
+    for fighter in CHARACTERS:
+
+        stats = CHARACTERS[fighter]
+
+        print(f"{number}. {fighter}")
+        print(f"   HP: {stats['hp']}")
+        print(f"   Speed: {stats['speed']}")
+        print(f"   {stats['description']}")
+        print()
+
+        number += 1
+
+
+def choose_character():
+
+    fighters = list(CHARACTERS.keys())
+
+    while True:
+
+        display_characters()
+
+        choice = input("Select Fighter (1-6): ")
+
+        if choice.isdigit():
+
+            choice = int(choice)
+
+            if 1 <= choice <= len(fighters):
+
+                fighter = fighters[choice-1]
+
+                print()
+                print(f"You selected {fighter}!")
+                print()
+
+                return fighter
+
+        print("Invalid choice.\n")
+
+# ============================================
+# CREATE PLAYER
+# ============================================
+
+def create_fighter(name):
+
+    return {
+
+        "name":name,
+
+        "hp":CHARACTERS[name]["hp"],
+
+        "final_meter":0,
+
+        "limit":0,
+
+        "ko_meter":0,
+
+        "used_final":False
+
+    }
+
+# ============================================
+# SHOW STATUS
+# ============================================
+
+def show_status(player, enemy):
+
+    print("="*60)
+
+    print(f"{player['name']} HP: {player['hp']}")
+    print(f"{enemy['name']} HP: {enemy['hp']}")
+
+    print()
+
+    print(f"Final Smash Meter: {player['final_meter']}%")
+
+    if player["name"]=="Cloud":
+        print(f"Limit Gauge: {player['limit']}%")
+
+    if player["name"]=="Little Mac":
+        print(f"KO Meter: {player['ko_meter']}%")
+
+    print("="*60)
+
+
+def choose_move(player):
+
+    fighter = player["name"]
+
+    moves = CHARACTERS[fighter]["moves"]
+
+    print()
+
+    print("Choose a move")
+
+    print(f"1. {moves['neutral'][0]}")
+    print(f"2. {moves['side'][0]}")
+    print(f"3. {moves['up'][0]}")
+    print(f"4. {moves['down'][0]}")
+
+    if player["final_meter"]>=100 and not player["used_final"]:
+
+        print(f"5. {moves['final'][0]} ")
+
+    while True:
+
+        choice = input("> ")
+
+        if choice in ["1","2","3","4"]:
+
+            return MOVE_KEYS[choice]
+
+        if (choice=="5"
+            and player["final_meter"]>=100
+            and not player["used_final"]):
+
+            return "final"
+
+        print("Invalid move.")
+
+
+# ============================================
+# DAMAGE CALCULATOR
+# ============================================
+
+def calculate_damage(player, move):
+
+    fighter = player["name"]
+
+    move_name, damage = CHARACTERS[fighter]["moves"][move]
+
+    critical = False
+
+    # Random damage variation
+    damage += random.randint(-2, 2)
+
+    if damage < 1:
+        damage = 1
+
+    # Luigi critical Up Special
+    if fighter == "Luigi":
+        if move == "up":
+            if random.randint(1,5) == 1:
+                damage *= 2
+                critical = True
+
+    # Cloud Limit
+    if fighter == "Cloud":
+
+        if player["limit"] >= 100:
+
+            damage += 10
+            player["limit"] = 0
+
+            print()
+            print("LIMIT BREAK!")
+            print()
+
+    # Little Mac KO Punch
+    if fighter == "Little Mac":
+
+        if player["ko_meter"] >= 100:
+
+            if move == "neutral":
+
+                move_name = "KO Punch"
+
+                damage = 32
+
+                player["ko_meter"] = 0
+
+                print()
+                print("KO PUNCH!!")
+                print()
+
+    return move_name, damage, critical
+
+
+# ============================================
+# ENEMY AI
+# ============================================
+
+def enemy_choose_move(enemy):
+
+    moves = ["neutral","side","up","down"]
+
+    if enemy["final_meter"] >= 100 and not enemy["used_final"]:
+
+        if random.randint(1,3) == 1:
+
+            return "final"
+
+    return random.choice(moves)
+
+
+# ============================================
+# BATTLE ROUND
+# ============================================
+
+def battle_round(player, enemy, round_number):
+
+    show_status(player, enemy)
+
+    print()
+    print(f"ROUND {round_number}")
+    print()
+
+    player_move = choose_move(player)
+    enemy_move = enemy_choose_move(enemy)
+
+    player_move_name, player_damage, critical = calculate_damage(player, player_move)
+
+    enemy_move_name, enemy_damage, enemy_critical = calculate_damage(enemy, enemy_move)
+
+    print()
+    print(f"You used {player_move_name}!")
+
+    if critical:
+        print("CRITICAL HIT!")
+
+    # -----------------------------
+    # Little Mac Slip Counter
+    # -----------------------------
+
+    if player["name"] == "Little Mac" and player_move == "down":
+
+        print("Little Mac waits for an attack...")
+
+        enemy_hits = random.random() < 0.80
+
+        if enemy_hits:
+
+            print("Enemy landed the attack!")
+
+            player["hp"] -= enemy_damage
+
+            print("Slip Counter failed!")
+
+        else:
+
+            print("Enemy missed!")
+
+            counter = 22
+
+            enemy["hp"] -= counter
+
+            print(f"Slip Counter activated!")
+            print(f"Enemy took {counter} damage!")
+
+    else:
+
+        # Player attack
+
+        if random.random() < 0.80:
+
+            enemy["hp"] -= player_damage
+
+            print(f"Enemy took {player_damage} damage!")
+
+        else:
+
+            print("You missed!")
+
+        # Enemy attack
+
+        print()
+
+        print(f"Enemy used {enemy_move_name}")
+
+        if enemy_critical:
+
+            print("Critical Hit!")
+
+        if random.random() < 0.80:
+
+            player["hp"] -= enemy_damage
+
+            print(f"You took {enemy_damage} damage!")
+
+        else:
+
+            print("Enemy missed!")
+
+
+
+    player["final_meter"] += player_damage // 2
+    enemy["final_meter"] += enemy_damage // 2
+
+    player["final_meter"] = min(player["final_meter"],100)
+    enemy["final_meter"] = min(enemy["final_meter"],100)
+
+    
+    if player["name"] == "Cloud":
+
+        player["limit"] += 25
+        player["limit"] = min(player["limit"],100)
+
+    if enemy["name"] == "Cloud":
+
+        enemy["limit"] += 25
+        enemy["limit"] = min(enemy["limit"],100)
+
+
+    if player["name"] == "Little Mac":
+
+        player["ko_meter"] += 20
+        player["ko_meter"] = min(player["ko_meter"],100)
+
+    if enemy["name"] == "Little Mac":
+
+        enemy["ko_meter"] += 20
+        enemy["ko_meter"] = min(enemy["ko_meter"],100)
+
+
+    if player_move == "final":
+
+        print()
+        print("⭐ FINAL SMASH ⭐")
+
+        enemy["hp"] -= player_damage
+
+        player["used_final"] = True
+        player["final_meter"] = 0
+
+    if enemy_move == "final":
+
+        print()
+        print("Enemy used their FINAL SMASH!")
+
+        player["hp"] -= enemy_damage
+
+        enemy["used_final"] = True
+        enemy["final_meter"] = 0
+
+    player["hp"] = max(0,player["hp"])
+    enemy["hp"] = max(0,enemy["hp"])
+
+    input("\nPress ENTER to continue...")
+
+
+def choose_enemy(player_name):
+
+    fighters = list(CHARACTERS.keys())
+    fighters.remove(player_name)
+
+    enemy = random.choice(fighters)
+
+    print()
+    print(f"Your opponent is {enemy}!")
+    print()
+
+    return enemy
+
+
+def battle(player_name):
+
+    enemy_name = choose_enemy(player_name)
+
+    player = create_fighter(player_name)
+    enemy = create_fighter(enemy_name)
+
+    round_number = 1
+
+    while player["hp"] > 0 and enemy["hp"] > 0:
+
+        battle_round(player, enemy, round_number)
+
+        round_number += 1
+
+        time.sleep(0.5)
+
+    print()
+    print("=" * 60)
+
+    if player["hp"] > 0:
+
+        print("🏆 VICTORY!")
+        print()
+        print(f"{player['name']} defeated {enemy['name']}!")
+
+    else:
+
+        print("💀 DEFEAT!")
+        print()
+        print(f"{enemy['name']} defeated {player['name']}!")
+
+    print("=" * 60)
+
+
+def play_again():
+
+    while True:
+
+        choice = input("\nPlay Again? (y/n): ").lower()
+
+        if choice in ["y","yes"]:
+            return True
+
+        if choice in ["n","no"]:
+            return False
+
+        print("Please enter y or n.")
+
+
+def main():
+
+    title()
+
+    while True:
+
+        player = choose_character()
+
+        print()
+        print(f"You chose {player}!")
+        print()
+
+        input("Press ENTER to begin the battle...")
+
+        battle(player)
+
+        if not play_again():
+
+            break
+
+    print()
+    print("=" * 60)
+    print("Thanks for playing!")
+    print("Super Smash Bros. Ultimate - Python Edition")
+    print("=" * 60)
+
+
+
+
+if __name__ == "__main__":
+    main()
