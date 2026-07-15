@@ -30,19 +30,20 @@ MOVESETS = {
         "side": "Sonic Blade (13 damage)",
         "up": "Spiral Slice (8 damage)",
         "down": "Sealing Spell (16 damage)"
-    }
+    },
     "Luigi": {
         "neutral": "Fireball (5 damage)",
         "side": "Green Missile (14 damage)",
         "up": "Super Jump Punch (10 dammage)",
         "down": "Luigi Cyclone (12 damage)"
-    }
+    },
 
     "Little Mac": {
         "neutral": "Straight Lunge (10 damage)",
         "side": "Jolt Haymaker (13 damage)",
         "up": "Rising Uppercut (12 damage)",
         "down": "Slip Counter (16 damage)"
+    }
     
 }
 
@@ -114,7 +115,7 @@ def display_moves(character):
 
 def select_move(character):
     """Selection construct: Player selects a move."""
-    valid_moves = ["1", "2", "3", "4"]
+    valid_moves = ["1", "2", "3", "4", "5", "6"]
     
     while True: 
         display_moves(character)
@@ -166,8 +167,8 @@ def battle_round(player_character, player_hp, enemy_character, enemy_hp, round_n
     else:
         
         if player_hits:
-        enemy_hp -= player_damage
-        print(f"Hit! Dealt {player_damage} damage!")
+            enemy_hp -= player_damage
+            print(f"Hit! Dealt {player_damage} damage!")
         else:
             print("Missed!")
     
