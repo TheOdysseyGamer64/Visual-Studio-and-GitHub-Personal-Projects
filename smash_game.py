@@ -145,7 +145,7 @@ def battle_round(player_character, player_hp, enemy_character, enemy_hp, round_n
     _, player_move, player_damage = select_move(player_character)
     player_used_counter = (
         player_character == "Little Mac"
-        and "Slip Counter" is player_move
+        and "Slip Counter" == player_move
     )
     
     print(f"You used: {player_move}")
