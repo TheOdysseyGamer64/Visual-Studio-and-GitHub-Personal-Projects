@@ -31,6 +31,19 @@ MOVESETS = {
         "up": "Spiral Slice (8 damage)",
         "down": "Sealing Spell (16 damage)"
     }
+    "Luigi": {
+        "neutral": "Fireball (5 damage)",
+        "side": "Green Missile (14 damage)",
+        "up": "Super Jump Punch (10 dammage)",
+        "down": "Luigi Cyclone (12 damage)"
+    }
+
+    "Little Mac": {
+        "neutral": "Straight Lunge (10 damage)",
+        "side": "Jolt Haymaker (13 damage)",
+        "up": "Rising Uppercut (12 damage)",
+        "down": "Slip Counter (16 damage)
+    
 }
 
 
@@ -126,6 +139,10 @@ def battle_round(player_character, player_hp, enemy_character, enemy_hp, round_n
    
     print(f"Your turn! Playing as {player_character}!")
     _, player_move, player_damage = select_move(player_character)
+    player_used_counter = (
+        player_character == "Little Mac"
+        and "Slip Counter" is player_move
+    )
     
     print(f"You used: {player_move}")
     
@@ -141,12 +158,15 @@ def battle_round(player_character, player_hp, enemy_character, enemy_hp, round_n
     player_hits = random.random() < 0.8
     enemy_hits = random.random() < 0.8
     
-    
-    if player_hits:
+    if player_used_counter:
+        print("Little Mac is waiting to counter...")
+    else:
+        
+        if player_hits:
         enemy_hp -= player_damage
         print(f"Hit! Dealt {player_damage} damage!")
-    else:
-        print("Missed!")
+        else:
+            print("Missed!")
     
     time.sleep(0.3)
     
@@ -155,6 +175,11 @@ def battle_round(player_character, player_hp, enemy_character, enemy_hp, round_n
         print(f"Enemy hit! Took {enemy_damage} damage!")
     else:
         print("Enemy missed!")
+
+        if player_used_counter:
+            counter_damage = 20
+            enemy_hp -= counter_damage
+            print(f"Slip Counter activated! Little Mac dealt {counter_damage} damage!")
     
  
     player_hp = max(0, player_hp)
