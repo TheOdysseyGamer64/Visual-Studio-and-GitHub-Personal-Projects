@@ -51,7 +51,10 @@ CHARACTERS = {
     "Cloud": {"name": "Cloud", "hp": 100, "attack_speed": 0.8, "description": "A mercenary with powerful limit break abilities"},
     "Mii Swordfighter": {"name": "Mii Swordfighter", "hp": 85, "attack_speed": 1.0, "description": "A customizable fighter with balanced stats"},
     "Mario": {"name": "Mario", "hp": 90, "attack_speed": 0.9, "description": "The classic hero with fire-based attacks"},
-    "Sora": {"name": "Sora", "hp": 95, "attack_speed": 0.95, "description": "A keyblade master with magical abilities"}
+    "Sora": {"name": "Sora", "hp": 95, "attack_speed": 0.95, "description": "A keyblade master with magical abilities"},
+    "Luigi": {"name": "Luigi", "hp": 90, "attack_speed": 0.9, "description": "The cowardly brother of Mario, yet brave to fight even monsters"},
+    "Little Mac": {"name": "Little Mac", "hp": 90, "attack_speed": 0.85, "description": "One of Smash's most hated characters; buff, yet weak, and a boxer that really cooks you"}
+    
 }
 
 MOVE_OPTIONS = {
