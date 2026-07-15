@@ -11,38 +11,44 @@ MOVESETS = {
         "neutral": "Slash (5 damage)",
         "side": "Limit Break Cross Slash (15 damage)",
         "up": "Climhazzard (8 damage)",
-        "down": "Limit Break Final Heaven (20 damage)"
+        "down": "Limit Break Final Heaven (20 damage)",
+        "final": "Omnislash Version Five (45 damage)"
     },
     "Mii Swordfighter": {
         "neutral": "Jab Combo (4 damage)",
         "side": "Blade Counter (12 damage)",
         "up": "Rising Slash (7 damage)",
-        "down": "Neutral Special (10 damage)"
+        "down": "Neutral Special (10 damage)",
+        "final" "Final Edge (38 damage)"
     },
     "Mario": {
         "neutral": "Fireball (6 damage)",
         "side": "Cape Spin (8 damage)",
         "up": "Super Jump Punch (9 damage)",
-        "down": "F.L.U.D.D (11 damage)"
+        "down": "F.L.U.D.D (11 damage)",
+        "final": "Mario Finale (40 damage)
     },
     "Sora": {
         "neutral": "Keyblade Slash (5 damage)",
         "side": "Sonic Blade (13 damage)",
         "up": "Spiral Slice (8 damage)",
-        "down": "Sealing Spell (16 damage)"
+        "down": "Sealing Spell (16 damage)",
+        "final": "Seeing the Keyhole (37 damage)"
     },
     "Luigi": {
         "neutral": "Fireball (5 damage)",
         "side": "Green Missile (14 damage)",
         "up": "Super Jump Punch (10 dammage)",
-        "down": "Luigi Cyclone (12 damage)"
+        "down": "Luigi Cyclone (12 damage)",
+        "final": "Poltergust 3000 (38 damage)"
     },
 
     "Little Mac": {
         "neutral": "Straight Lunge (10 damage)",
         "side": "Jolt Haymaker (13 damage)",
         "up": "Rising Uppercut (12 damage)",
-        "down": "Slip Counter (16 damage)"
+        "down": "Slip Counter (16 damage)",
+        "final": "Big Mac (52 damage)"
     }
     
 }
@@ -62,7 +68,8 @@ MOVE_OPTIONS = {
     "1": "neutral",
     "2": "side",
     "3": "up",
-    "4": "down"
+    "4": "down",
+    "5": "final"
 }
 
 
@@ -89,19 +96,19 @@ def display_characters():
 
 def select_character():
     """Selection construct: Player chooses their character."""
-    valid_choices = ["1", "2", "3", "4"]
+    valid_choices = ["1", "2", "3", "4", "5", "6"]
     character_list = list(CHARACTERS.keys())
     
     while True: 
         display_characters()
-        choice = input("Enter the number of your fighter (1-4): ").strip()
+        choice = input("Enter the number of your fighter (1-6): ").strip()
         
         if choice in valid_choices:
             selected_character = character_list[int(choice) - 1]
             print(f"You selected {selected_character}!")
             return selected_character
         else:
-            print("Invalid choice! Please enter 1-4.")
+            print("Invalid choice! Please enter 1-6.")
 
 
 def display_moves(character):
@@ -112,25 +119,38 @@ def display_moves(character):
     print("3. Up Special (Medium Speed, Medium Damage)")
     print("4. Down Special (Slow, High Damage)")
 
+    if final_ready:
+        print("5. FINAL SMASH")
+
 
 def select_move(character):
     """Selection construct: Player selects a move."""
-    valid_moves = ["1", "2", "3", "4", "5", "6"]
+    valid_moves = ["1", "2", "3", "4"]
+
+    if final_ready:
+        valid moves.append("5")
     
     while True: 
-        display_moves(character)
-        choice = input("Choose your move (1-4): ").strip()
+        display_moves(character, final_ready)
+        choice = input("Choose your move: ").strip()
         
         if choice in valid_moves:
+
+            if choice == "5":
+                move_info = MOVESETS[character]["final"]
+                damage = int(move_info.split("(")[1].split()[0])
+                return "final", move_info, damage
+                
             direction = MOVE_OPTIONS[choice]
             move_info = MOVESETS[character][direction]
+            damage = int(move_info.split("(")[1].split()[0])
             
 
             damage = int(move_info.split("(")[1].split()[0])
             
             return direction, move_info, damage
-        else:
-            print("Invalid move! Please select 1-4.")
+        
+        print("Invalid move!")
 
 
 def battle_round(player_character, player_hp, enemy_character, enemy_hp, round_num):
@@ -145,7 +165,7 @@ def battle_round(player_character, player_hp, enemy_character, enemy_hp, round_n
     _, player_move, player_damage = select_move(player_character)
     player_used_counter = (
         player_character == "Little Mac"
-        and "Slip Counter" == player_move
+        and "Slip Counter" in player_move
     )
     
     print(f"You used: {player_move}")
@@ -177,6 +197,9 @@ def battle_round(player_character, player_hp, enemy_character, enemy_hp, round_n
     if enemy_hits:
         player_hp -= enemy_damage
         print(f"Enemy hit! Took {enemy_damage} damage!")
+
+        if player_used_counter:
+            print("Slip Counter failed!")
     else:
         print("Enemy missed!")
 
@@ -202,11 +225,18 @@ def get_enemy_character(player_choice):
 
 def play_battle(player_character):
     """Main battle loop using iteration and selection."""
-    enemy_character = get_enemy_character(player_character)
     
 
+    
+    enemy_character = get_enemy_character(player_character)
     player_hp = CHARACTERS[player_character]["hp"]
     enemy_hp = CHARACTERS[enemy_character]["hp"]
+
+    player_final_meter = 0
+    enemy_final_meter = 0
+    
+    player_used_final = False
+    enemy_used_final = False
     
     round_num = 1
     max_rounds = 15
@@ -215,6 +245,15 @@ def play_battle(player_character):
     while player_hp > 0 and enemy_hp > 0 and round_num <= max_rounds:
         player_hp, enemy_hp = battle_round(player_character, player_hp, 
                                            enemy_character, enemy_hp, round_num)
+
+        player_final_meter += 25
+        enemy_final_meter += 25
+
+        player_final_meter = min(player_final_meter, 100)
+        enemy_final_meter = min(enemy_final_meter, 100)
+
+        print(f"\nFinal Smash Meter: {player_final_meter}%")
+        
         round_num += 1
         
         if player_hp > 0 and enemy_hp > 0:
