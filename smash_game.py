@@ -42,7 +42,7 @@ MOVESETS = {
         "neutral": "Straight Lunge (10 damage)",
         "side": "Jolt Haymaker (13 damage)",
         "up": "Rising Uppercut (12 damage)",
-        "down": "Slip Counter (16 damage)
+        "down": "Slip Counter (16 damage)"
     
 }
 
