@@ -1,26 +1,14 @@
 """
 =========================================================
 SUPER SMASH BROS ULTIMATE - PYTHON EDITION V2
-Created by Shrey
-
-A GCSE Computer Science Project
-
-Programming Concepts:
-✓ Selection
-✓ Iteration
-✓ Sequences
-✓ Functions
-✓ Dictionaries
-✓ Randomisation
+Created by Diesel
 =========================================================
 """
 
 import random
 import time
 
-# ============================================
-# CHARACTER DATA
-# ============================================
+
 
 CHARACTERS = {
 
@@ -117,9 +105,6 @@ MOVE_KEYS = {
     "5":"final"
 }
 
-# ============================================
-# TITLE
-# ============================================
 
 def title():
 
@@ -129,9 +114,6 @@ def title():
     print("="*60)
     print()
 
-# ============================================
-# CHARACTER SELECT
-# ============================================
 
 def display_characters():
 
@@ -178,9 +160,7 @@ def choose_character():
 
         print("Invalid choice.\n")
 
-# ============================================
-# CREATE PLAYER
-# ============================================
+
 
 def create_fighter(name):
 
@@ -200,9 +180,6 @@ def create_fighter(name):
 
     }
 
-# ============================================
-# SHOW STATUS
-# ============================================
 
 def show_status(player, enemy):
 
@@ -260,9 +237,6 @@ def choose_move(player):
         print("Invalid move.")
 
 
-# ============================================
-# DAMAGE CALCULATOR
-# ============================================
 
 def calculate_damage(player, move):
 
@@ -272,20 +246,20 @@ def calculate_damage(player, move):
 
     critical = False
 
-    # Random damage variation
+    # random damage variation
     damage += random.randint(-2, 2)
 
     if damage < 1:
         damage = 1
 
-    # Luigi critical Up Special
+    # luigi critical Up Special
     if fighter == "Luigi":
         if move == "up":
             if random.randint(1,5) == 1:
                 damage *= 2
                 critical = True
 
-    # Cloud Limit
+    # cloud Limit
     if fighter == "Cloud":
 
         if player["limit"] >= 100:
@@ -317,9 +291,8 @@ def calculate_damage(player, move):
     return move_name, damage, critical
 
 
-# ============================================
-# ENEMY AI
-# ============================================
+
+
 
 def enemy_choose_move(enemy):
 
@@ -334,9 +307,7 @@ def enemy_choose_move(enemy):
     return random.choice(moves)
 
 
-# ============================================
-# BATTLE ROUND
-# ============================================
+
 
 def battle_round(player, enemy, round_number):
 
@@ -359,9 +330,7 @@ def battle_round(player, enemy, round_number):
     if critical:
         print("CRITICAL HIT!")
 
-    # -----------------------------
-    # Little Mac Slip Counter
-    # -----------------------------
+  
 
     if player["name"] == "Little Mac" and player_move == "down":
 
@@ -456,7 +425,7 @@ def battle_round(player, enemy, round_number):
     if player_move == "final":
 
         print()
-        print("⭐ FINAL SMASH ⭐")
+        print("FINAL SMASH")
 
         enemy["hp"] -= player_damage
 
@@ -515,7 +484,7 @@ def battle(player_name):
 
     if player["hp"] > 0:
 
-        print("🏆 VICTORY!")
+        print("VICTORY!")
         print()
         print(f"{player['name']} defeated {enemy['name']}!")
 
