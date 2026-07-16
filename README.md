@@ -6,17 +6,17 @@ This repository contains a variety of projects I've created using **Visual Studi
 
 **CURRENT PROJECT**
 
-smash_game.py is a text based representation of Super Smash Bros. Ultimate, with more characters to be added soon. You can play the game by copying the code into your IDLE - preferably over version 3.12
+reworked_smash.py is a text based representation of Super Smash Bros. Ultimate, with more characters to be added soon. You can play the game by copying the code into your IDLE - preferably over version 3.12
 
 ## 📂 What's Inside
 
-Projects may include:
+Projects include:
 - 🎮 Games
 - 🖥️ Console applications
 - 🧪 Programming experiments
 - 📚 School and personal coding projects
 
-## 🛠️ Languages & Technologies
+## 🛠️ Languages 
 
 - CSS
 - HTML
@@ -42,4 +42,4 @@ I plan to continue adding new projects as I learn more, including:
 
 ## 📜 License
 
-This repository is intended for educational and personal portfolio purposes.
+This repository is intended for educational and personal portfolio purposes. If anything goes wrong when you use my code on your device, I am not responsible for any damages caused.
