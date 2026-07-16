@@ -4,7 +4,7 @@ Welcome to my collection of personal programming projects!
 
 This repository contains a variety of projects I've created using **Visual Studio** and **IDLE** as I learn new programming concepts and improve my software development skills.
 
-##**CURRENT PROJECT**
+## CURRENT PROJECT
 
 reworked_smash.py is a text based representation of Super Smash Bros. Ultimate, with more characters to be added soon. You can play the game by copying the code into your IDLE - preferably over version 3.12
 
