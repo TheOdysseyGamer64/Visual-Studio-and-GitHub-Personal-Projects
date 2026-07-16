@@ -393,8 +393,8 @@ def battle_round(player, enemy, round_number):
 
 
 
-    player["final_meter"] += player_damage // 2
-    enemy["final_meter"] += enemy_damage // 2
+    player["final_meter"] += 10 + enemy_damage 
+    enemy["final_meter"] += 10 + player_damage 
 
     player["final_meter"] = min(player["final_meter"],100)
     enemy["final_meter"] = min(enemy["final_meter"],100)
@@ -426,6 +426,9 @@ def battle_round(player, enemy, round_number):
 
         print()
         print("FINAL SMASH")
+        print(f"{player['name']} used {player_move_name}!")
+        print(f"It dealt {player_damage} damage!")
+
 
         enemy["hp"] -= player_damage
 
