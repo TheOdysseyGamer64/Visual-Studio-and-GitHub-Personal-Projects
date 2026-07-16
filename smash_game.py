@@ -33,7 +33,7 @@ MOVESETS = {
         "side": "Cape Spin (8 damage)",
         "up": "Super Jump Punch (9 damage)",
         "down": "F.L.U.D.D (11 damage)",
-        "final": "Mario Finale (40 damage)
+        "final": "Mario Finale (40 damage)"
     },
     "Sora": {
         "neutral": "Keyblade Slash (5 damage)",
