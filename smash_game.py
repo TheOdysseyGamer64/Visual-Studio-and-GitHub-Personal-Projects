@@ -1,3 +1,10 @@
+###########################################################################################################################################################################################################################
+# THIS GAME IS NOW OBSOLETE. THE INABILITY TO ADD FINAL SMASH MECHANICS IN THIS VERSION OF THE CODE MAKES IT UNVIABLE TO BE AN ACCCURATE REPRESENTATION OF SUPER SMASH BROS ULTIMATE'S UNIQUE AND NEW MECHANICS FOR MOVES # 
+# PLEASE NOW SEE reworked_smash.py TO SEE THE FINAL SMASH MECHANICS IN ACTION WHILE WORKING PROPERLY ALONG WITH SAFE AND TRUE INTEGRATION OF THE SPECIAL ABILITY MOVES OF PUNCHOUT'S LITTLE MAC AND FINAL FANTASY'S CLOUD #
+############################################################################################################################################################################################################################
+
+
+
 """
 Super Smash Bros Ultimate - Python Edition
 A text-based fighting game where players choose characters and execute moves.
