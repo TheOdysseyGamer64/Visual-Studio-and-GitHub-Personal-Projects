@@ -20,7 +20,7 @@ CHARACTERS = {
             "side": ("Cross Slash", 15),
             "up": ("Climhazzard", 10),
             "down": ("Limit Break", 18),
-            "final": ("Omnislash Ver. 5", 35)
+            "final": ("Omnislash Ver. 5", 55)
         },
         "description":
         "A mercenary who grows stronger through his Limit Gauge."
@@ -30,11 +30,11 @@ CHARACTERS = {
         "hp": 95,
         "speed": 0.95,
         "moves": {
-            "neutral": ("Fireball", 6),
-            "side": ("Cape", 10),
-            "up": ("Super Jump Punch", 11),
-            "down": ("F.L.U.D.D.", 8),
-            "final": ("Mario Finale", 34)
+            "neutral": ("Fireball", 8),
+            "side": ("Cape", 15),
+            "up": ("Super Jump Punch", 14),
+            "down": ("F.L.U.D.D.", 10),
+            "final": ("Mario Finale", 65)
         },
         "description":
         "Nintendo's famous plumber."
@@ -48,7 +48,7 @@ CHARACTERS = {
             "side": ("Green Missile", 14),
             "up": ("Super Jump Punch", 10),
             "down": ("Luigi Cyclone", 11),
-            "final": ("Poltergust G-00", 35)
+            "final": ("Poltergust G-00", 48)
         },
         "description":
         "A timid fighter with surprising power."
@@ -62,7 +62,7 @@ CHARACTERS = {
             "side": ("Sonic Blade", 14),
             "up": ("Aerial Sweep", 9),
             "down": ("Magic Burst", 16),
-            "final": ("Sealing the Keyhole", 35)
+            "final": ("Sealing the Keyhole", 41)
         },
         "description":
         "The Keyblade wielder."
@@ -90,7 +90,7 @@ CHARACTERS = {
             "side": ("Jolt Haymaker", 14),
             "up": ("Rising Uppercut", 10),
             "down": ("Slip Counter", 0),
-            "final": ("Giga Mac", 38)
+            "final": ("Giga Mac", 70)
         },
         "description":
         "A fearless boxer with devastating punches."
