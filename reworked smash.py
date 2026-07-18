@@ -1,3 +1,4 @@
+###Welcome to reworked_smash.py! This is the new version of smash.py that has the fully active Final Smash mechanic for all characters, along with a Final Smash meter (FS Meter) so you can see the status of charge for the Final Smash as well as (if using Cloud/Little Mac) the Limit Breaker and KO Punch meters. Both meters are completely separate and FS charges a lot faster###
 
 """
 =========================================================
@@ -316,7 +317,7 @@ def battle_round(player, enemy, round_number):
 
     print()
     print(f"ROUND {round_number}")
-    print()
+    print() 
 
     player_move = choose_move(player)
     enemy_move = enemy_choose_move(enemy)
