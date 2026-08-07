@@ -26,7 +26,7 @@ MOVESETS = {
         "side": "Blade Counter (12 damage)",
         "up": "Rising Slash (7 damage)",
         "down": "Neutral Special (10 damage)",
-        "final" "Final Edge (38 damage)"
+        "final": "Final Edge (38 damage)"
     },
     "Mario": {
         "neutral": "Fireball (6 damage)",
