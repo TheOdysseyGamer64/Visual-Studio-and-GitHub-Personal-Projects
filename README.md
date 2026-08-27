@@ -39,4 +39,4 @@ I plan to continue adding new projects as I learn more, including:
 
 ## 📜 License
 
-This repository is intended for educational and personal portfolio purposes. If anything goes wrong when you use my code on your device, I am not responsible for any damages caused.
+This repository is intended for educational and personal portfolio purposes. If anything goes wrong when you use my code on your device, I am not responsible for any damages caused. The code is my own work, but Nintendo/Disney/Sqaure Enix assets, characters, names, etc. are copyrighted/trademarked by their respective owners and are not covered by any licence granted by this repository.
