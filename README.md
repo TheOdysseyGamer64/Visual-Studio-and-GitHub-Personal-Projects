@@ -1,4 +1,4 @@
-# 💻 Visual Studio & GitHub Personal Projects
+# Visual Studio & GitHub Personal Projects
 
 Welcome to my collection of personal programming projects!
 
@@ -11,19 +11,18 @@ reworked_smash.py is a text based representation of Super Smash Bros. Ultimate, 
 ## 📂 What's Inside
 
 Projects include:
-- 🎮 Games
-- 🖥️ Console applications
-- 🧪 Programming experiments
-- 📚 School and personal coding projects
+- Games
+- Programming experiments
+-  Personal coding projects
 
-## 🛠️ Languages 
+## Languages 
 
 - CSS
 - HTML
 - Python
 
 
-## 🎯 Purpose
+## Purpose
 
 The goal of this repository is to:
 - Improve my programming skills
@@ -31,14 +30,12 @@ The goal of this repository is to:
 - Experiment with new ideas and technologies
 - Track my progress over time
 
-## 🚀 Future Plans
+## Future Plans
 
 I plan to continue adding new projects as I learn more, including:
 - More advanced applications
 - Game development
 - GUI programs
-- AI and machine learning experiments
-- Larger collaborative projects
 
 ## 📜 License
 
