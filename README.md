@@ -8,6 +8,11 @@ This repository contains a variety of projects I've created using **Visual Studi
 
 reworked_smash.py is a text based representation of Super Smash Bros. Ultimate, with more characters to be added soon. You can play the game by copying the code into your IDLE - preferably over version 3.6 (for the f-string)
 
+<img width="550" height="700" alt="image" src="https://github.com/user-attachments/assets/8aa0b81f-9e9c-4248-8d0c-1a67422abcde" />
+
+(here's the game inside Python 3.14.7)
+
+
 ## 📂 What's Inside
 
 Projects include:
