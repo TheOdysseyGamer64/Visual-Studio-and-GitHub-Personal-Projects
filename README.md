@@ -4,9 +4,22 @@ Welcome to my collection of personal programming projects!
 
 This repository contains a variety of projects I've created using **Visual Studio** and **IDLE** as I learn new programming concepts and improve my software development skills.
 
-# CURRENT PROJECT
+# Super Smash Bros. (Fan Edition)
+**reworked_smash.py** is a text based representation of Super Smash Bros. Ultimate. **It is a fan game**, and is my current project. AND, 
+more characters will be added soon...
 
-reworked_smash.py is a text based representation of Super Smash Bros. Ultimate, with more characters to be added soon. You can play the game by copying the code into your IDLE - preferably over version 3.6 (for the f-string)
+### Features
+- Character-based combat
+- Multiple attacks
+- Damage and HP system
+- Final Smash meter
+- Counter mechanics
+- Multiple characters
+
+### Running the game
+- Requires Python 3.6 or later.
+- Copy the code from reworked_smash.py into your IDLE or any online IDLE and run it (F5 on Python IDLE Desktop, if online there should be a button labelled "Run", just press that :D.
+
 
 <img width="550" height="700" alt="image" src="https://github.com/user-attachments/assets/8aa0b81f-9e9c-4248-8d0c-1a67422abcde" />
 
@@ -18,7 +31,7 @@ reworked_smash.py is a text based representation of Super Smash Bros. Ultimate, 
 Projects include:
 - Games
 - Programming experiments
--  Personal coding projects
+- Personal coding projects
 
 ## Languages 
 
