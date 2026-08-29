@@ -264,14 +264,15 @@ def calculate_damage(player, move):
     # cloud Limit
     if fighter == "Cloud":
 
-        if player["limit"] >= 100:
-
+        if move == "down" and player["limit"] >= 100:
             damage += 10
-            player["limit"] = 0
+        player["limit"] = 0
 
-            print()
-            print("LIMIT BREAK!")
-            print()
+        print()
+        print("LIMIT BREAK!")
+        print()
+
+        
 
     # Little Mac KO Punch
     if fighter == "Little Mac":
@@ -424,18 +425,27 @@ def battle_round(player, enemy, round_number):
         enemy["ko_meter"] = min(enemy["ko_meter"],100)
 
 
+    if player_move != "final":
+        print(f"You used {player_move_name}!")
+
+        if critical:
+            print("Critical hit!!")
+
     if player_move == "final":
+         print()
+         print("FINAL SMASH")
+         print(f"{player['name']} used {player_move_name}!")
+         print(f"It dealt {player_damage} damage!")
 
-        print()
-        print("FINAL SMASH")
-        print(f"{player['name']} used {player_move_name}!")
-        print(f"It dealt {player_damage} damage!")
+   
 
+    enemy["hp"] -= player_damage
 
-        enemy["hp"] -= player_damage
+    player["used_final"] = True
+    player["final_meter"] = 0
+  
 
-        player["used_final"] = True
-        player["final_meter"] = 0
+    
 
     if enemy_move == "final":
 
